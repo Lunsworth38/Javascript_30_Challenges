@@ -8,8 +8,8 @@
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
 
   <div class="controls">
-    <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <label for="border">Border:</label>
+    <input id="border" type="range" name="border" min="10" max="200" value="10" data-sizing="px">
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
@@ -26,8 +26,9 @@
       misc styles, nothing to do with CSS variables
     */
     :root {
-      --base-color: brown;
+      --base-color: yellow;
       --blur: 0px;
+      --border: 5px;
     }
     body {
       text-align: center;
@@ -39,12 +40,15 @@
     }
 
     img {
-      border: 10px solid var(--base-color);
+      border: var(--border) solid var(--base-color);
       filter: blur(var(--blur))
     }
 
     .controls {
       margin-bottom: 50px;
+    }
+    .hl {
+      color: var(--base-color);
     }
 
     input {
@@ -53,13 +57,26 @@
   </style>
 
   <script>
+
     const colorPicker = document.querySelector("#base");
+    const blurControl = document.querySelector("#blur");
+    const borderControl = document.querySelector("#border");
     
     const updateBaseColor = (e) => {
       const color = e.target.value; 
       document.documentElement.style.setProperty("--base-color", color);
     }
+    const updateBlur = (e) => {
+      const blur = `${e.target.value}px`; 
+      document.documentElement.style.setProperty("--blur", blur );
+    }
+    const updateBorder = (e) => {
+      const border = `${e.target.value}px`; 
+      document.documentElement.style.setProperty("--border", border);
+    }
     colorPicker.addEventListener("input", updateBaseColor, false);
+    blurControl.addEventListener("input", updateBlur, false);
+    borderControl.addEventListener("input", updateBorder, false);
 
     
     
