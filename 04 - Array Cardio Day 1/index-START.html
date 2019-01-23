@@ -48,7 +48,7 @@
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-    const sortInventors = (array) => {
+    const sortInventorsBday = (array) => {
       const sortedInventors = array.slice().sort(function compare(a, b) {
         if (a.year < b.year) {
           return -1;
@@ -82,6 +82,23 @@
 
     // 5. Sort the inventors by years lived
 
+    const sortInventorsYrsLived = (array) => {
+      const sortedInventors = array.slice().sort(function compare(a, b) {
+        if ((a.passed - a.year) < (b.passed - b.year)) {
+          return -1;
+        }
+        if ((a.passed - a.year) < (b.passed - b.year)) {
+          return 1;
+        }
+
+        return 0;
+      })
+
+
+      return sortedInventors
+
+    }
+
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
@@ -94,8 +111,9 @@
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
     console.log(filterInventors(inventors))
     console.log(mapInventors(inventors))
-    console.log(sortInventors(inventors))
+    console.log(sortInventorsBday(inventors))
     console.log(reduceInventors(inventors))
+    console.log(sortInventorsYrsLived(inventors))
   </script>
 </body>
 
