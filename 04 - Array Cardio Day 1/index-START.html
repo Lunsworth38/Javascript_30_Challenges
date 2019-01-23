@@ -53,7 +53,7 @@
         if (a.year < b.year) {
           return -1;
         }
-        if (a.year > b.year) {
+        else if (a.year > b.year) {
           return 1;
         }
 
@@ -101,7 +101,7 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-    array.filter(boulevard => boulevard.search(" de "))
+
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
@@ -113,23 +113,17 @@
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
-    const counter = (array, instance) => {
-      const count = array.reduce(function (acc, val) {
-        if (val === instance) {
-          acc++
 
-        }
-        return acc
+    const transportation = data.reduce(function (obj, val) {
+      if (!obj[val]) {
+        obj[val] = 0
+      } obj[val]++
+      return obj
+    }, {})
 
-      }, 0)
-      return count
-    }
 
-    console.log(counter(data, "car"))
-    console.log(counter(data, "truck"))
-    console.log(counter(data, "bike"))
-    console.log(counter(data, "walk"))
-    console.log(counter(data, "van"))
+
+    console.log(transportation)
 
 
 
