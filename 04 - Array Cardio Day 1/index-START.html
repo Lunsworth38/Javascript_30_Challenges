@@ -101,19 +101,45 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    array.filter(boulevard => boulevard.search(" de "))
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-
+    const sortPeople = (array) => {
+      const sortedPeople = array.slice().sort();
+      return sortedPeople
+    }
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+
+    const counter = (array, instance) => {
+      const count = array.reduce(function (acc, val) {
+        if (val === instance) {
+          acc++
+
+        }
+        return acc
+
+      }, 0)
+      return count
+    }
+
+    console.log(counter(data, "car"))
+    console.log(counter(data, "truck"))
+    console.log(counter(data, "bike"))
+    console.log(counter(data, "walk"))
+    console.log(counter(data, "van"))
+
+
+
     console.log(filterInventors(inventors))
     console.log(mapInventors(inventors))
     console.log(sortInventorsBday(inventors))
     console.log(reduceInventors(inventors))
     console.log(sortInventorsYrsLived(inventors))
+    console.log(sortPeople(people))
+
   </script>
 </body>
 
